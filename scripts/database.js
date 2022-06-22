@@ -40,6 +40,7 @@ const database = {
     
 }
 
+// Getter functions that export the state for each table to be used in other modules
 export const getMetals = () => {
     return database.metals.map(metal => ({...metal}))
 }
@@ -56,6 +57,7 @@ export const getOrders = () => {
     return database.customOrders.map(order => ({...order}))
 }
 
+// Setter functions that receive an id for a record in a table then adds it to the transient state
 export const setMetal = (id) => {
     database.orderBuilder.metalId = id
 }
@@ -68,6 +70,7 @@ export const setStyle = (id) => {
     database.orderBuilder.styleId = id
 }
 
+// Function that adds order records to the database and resets the transient state
 export const addCustomOrder = () => {
     // Copy the current state of user choices
     const newOrder = {...database.orderBuilder}
